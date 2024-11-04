@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcrv2112jo4yr"]
+
+[ext_resource type="Texture2D" uid="uid://ha65yhtdscpu" path="res://assets/Background.jpg" id="1_rmsar"]
+[ext_resource type="Script" path="res://main/title.gd" id="1_tcr6n"]
+[ext_resource type="PackedScene" uid="uid://bcssd6qj45xi0" path="res://main/main_game.tscn" id="2_70uew"]
+[ext_resource type="FontFile" uid="uid://daipx8pa4xjyu" path="res://assets/Kenney High Square.ttf" id="2_lj3a2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ge7u"]
+font = ExtResource("2_lj3a2")
+font_size = 55
+outline_size = 10
+outline_color = Color(0.592157, 0.482353, 0.631373, 1)
+
+[node name="Title" type="Node2D"]
+position = Vector2(0, -3)
+script = ExtResource("1_tcr6n")
+next_scene = ExtResource("2_70uew")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 644.0
+offset_bottom = 357.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 639.0
+offset_bottom = 359.0
+texture = ExtResource("1_rmsar")
+flip_h = true
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 85.0
+offset_right = 526.0
+offset_bottom = 134.0
+text = "DONT PUSH THE BUTTON"
+label_settings = SubResource("LabelSettings_3ge7u")
+
+[node name="Play" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 186.0
+offset_right = 386.0
+offset_bottom = 228.0
+text = "PLAY"
+
+[connection signal="pressed" from="Control/Play" to="." method="_on_play_pressed"]

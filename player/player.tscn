@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4ghj3mnpcf1h"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_0iy5b"]
+[ext_resource type="Texture2D" uid="uid://dj73krtq852gd" path="res://assets/cat-walking-sprite-sheet-idle.png" id="2_5m2c5"]
+[ext_resource type="Texture2D" uid="uid://drwso47gch6as" path="res://assets/walk0.png" id="3_2ybge"]
+[ext_resource type="Texture2D" uid="uid://dxbk4hs6lvxvq" path="res://assets/walk1.png" id="4_ga3gp"]
+[ext_resource type="Texture2D" uid="uid://b0ys76xkr2m81" path="res://assets/walk2.png" id="5_jmfjj"]
+[ext_resource type="Texture2D" uid="uid://djquqxyo8tvh2" path="res://assets/walk3.png" id="6_mlaso"]
+[ext_resource type="Texture2D" uid="uid://db3dttwixvkxk" path="res://assets/walk4.png" id="7_lj32w"]
+[ext_resource type="Texture2D" uid="uid://ck2ofgr7jvgt0" path="res://assets/walk5.png" id="8_f1yjk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_34nw8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5m2c5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_f1yjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2ybge")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2ybge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ga3gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jmfjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mlaso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lj32w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_f1yjk")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vkgsr"]
+radius = 52.8867
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_0iy5b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_34nw8")
+animation = &"jump"
+autoplay = "idle"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 9)
+shape = SubResource("CircleShape2D_vkgsr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 3944
+limit_bottom = 358

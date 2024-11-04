@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://jrqbyc1lk54m"]
+
+[ext_resource type="Script" path="res://main/autoload_sound.gd" id="1_vpweo"]
+[ext_resource type="AudioStream" uid="uid://cpdj5rttdat4a" path="res://sound/bgm/the-haunted-harp-193564.mp3" id="2_eyqjt"]
+[ext_resource type="AudioStream" uid="uid://csvajnwvyqc11" path="res://sound/bgm/incarnatewav.wav" id="3_8lfld"]
+
+[node name="autoloadSound" type="Node"]
+script = ExtResource("1_vpweo")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_eyqjt")
+volume_db = -6.351
+autoplay = true
+
+[node name="ambience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8lfld")
+volume_db = -3.97
+autoplay = true

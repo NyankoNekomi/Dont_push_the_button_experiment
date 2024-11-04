@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxm8xm5ty0ao7"]
+
+[ext_resource type="Texture2D" uid="uid://j0dfsfycqgd4" path="res://icon.svg" id="1_n8yvi"]
+[ext_resource type="Script" path="res://testscene/test_scene.gd" id="1_ps3bm"]
+[ext_resource type="PackedScene" uid="uid://bo6sb56fh84nx" path="res://testscene/spider_scene.tscn" id="2_f2dav"]
+[ext_resource type="PackedScene" uid="uid://b4ghj3mnpcf1h" path="res://player/player.tscn" id="2_yrpe5"]
+[ext_resource type="PackedScene" uid="uid://cgudlxutd6v0m" path="res://testscene/button.tscn" id="3_6a6ob"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_de660"]
+size = Vector2(1155, 37)
+
+[node name="TestScene" type="Node2D"]
+script = ExtResource("1_ps3bm")
+spider_scene = ExtResource("2_f2dav")
+
+[node name="ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ground"]
+position = Vector2(569.5, 615.5)
+scale = Vector2(8.96094, 0.289063)
+texture = ExtResource("1_n8yvi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+position = Vector2(564, 618)
+shape = SubResource("RectangleShape2D_de660")
+
+[node name="Player" parent="." instance=ExtResource("2_yrpe5")]
+position = Vector2(96, 530)
+
+[node name="Button" parent="." instance=ExtResource("3_6a6ob")]
+position = Vector2(19, -14)
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(772, 451)
+scale = Vector2(2.04, 2.6)
+texture = ExtResource("1_n8yvi")
+
+[node name="Showspidertimer" type="Timer" parent="."]
+wait_time = 1.417
+one_shot = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(862, 325)
+
+[connection signal="body_entered" from="Button" to="." method="_on_button_body_entered"]
+[connection signal="body_exited" from="Button" to="." method="_on_button_body_exited"]
+[connection signal="timeout" from="Showspidertimer" to="." method="_on_showspidertimer_timeout"]
