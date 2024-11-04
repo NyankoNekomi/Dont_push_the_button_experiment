@@ -32,7 +32,7 @@ script = ExtResource("1_3xyxn")
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 358.0
-color = Color(0.968627, 0.184314, 0.12549, 0.431373)
+color = Color(0.968627, 0.184314, 0.12549, 0.462745)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
