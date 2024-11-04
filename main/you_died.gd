@@ -12,6 +12,7 @@ func _process(delta):
 
 
 func _on_replay_pressed():
+	await get_tree().create_timer(1).timeout
 	get_tree().reload_current_scene()
 	
 
